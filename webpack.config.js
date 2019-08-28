@@ -54,6 +54,7 @@ module.exports = {
 	},
 	externals: {
 		'react-sortable-tree': 'commonjs2 react-sortable-tree',
+		antd: 'commonj2 antd',
 		uuid: 'commonjs2 uuid',
 		react: 'commonjs2 react'
 	},
