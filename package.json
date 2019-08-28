@@ -1,6 +1,6 @@
 {
 	"name": "@volenday/input-tree",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"main": "dist/index.min.js",
 	"repository": "https://jeromemiranda@bitbucket.org/volenday-dev/input-tree",
 	"author": "Volenday <developers@volenday.com>",
@@ -12,13 +12,14 @@
 		"prepublishOnly": "webpack --progress -p"
 	},
 	"peerDependencies": {
-		"antd": "^3.22.2",
-		"react": "^16.8.6"
+		"antd": "~3.22.2",
+		"react": "~16.9.0",
+		"react-dom": "~16.9.0"
 	},
 	"dependencies": {
-		"antd": "^3.22.2",
-		"react": "^16.9.0",
-		"react-dom": "^16.9.0",
+		"antd": "~3.22.2",
+		"react": "~16.9.0",
+		"react-dom": "~16.9.0",
 		"webpack": "~4.39.3"
 	},
 	"devDependencies": {
