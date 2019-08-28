@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
-import { v1 } from 'uuid';
-import SortableTree, { addNodeUnderParent, changeNodeAtPath, removeNodeAtPath } from 'react-sortable-tree';
-
-// antd
-import Tree from 'antd/es/tree';
-
-// antd css
-import 'antd/es/tree/style/css';
+import { Form, Tree } from 'antd';
 
 export default class InputTree extends Component {
 	renderTree() {
-		const { id, onChange, value = '[]' } = this.props;
-		const getNodeKey = ({ treeIndex }) => treeIndex;
+		const { value = '[]' } = this.props;
 
 		let newValue = JSON.parse(value);
 		newValue = newValue.length != 0 ? newValue : [{ title: 'Root', key: 'root' }];
@@ -24,17 +16,14 @@ export default class InputTree extends Component {
 	}
 
 	render() {
-		const { id, label = '', withLabel = false, required = false } = this.props;
+		const { label = '', required = false, withLabel = false } = this.props;
 
-		if (withLabel) {
-			return (
-				<div class="form-group">
-					<label for={id}>{required ? `*${label}` : label}</label>
-					{this.renderTree()}
-				</div>
-			);
-		} else {
-			return this.renderTree();
-		}
+		const formItemCommonProps = {
+			colon: false,
+			label: withLabel ? label : false,
+			required
+		};
+
+		return <Form.Item {...formItemCommonProps}>{this.renderTree()}</Form.Item>;
 	}
 }

@@ -53,9 +53,7 @@ module.exports = {
 		libraryTarget: 'commonjs2'
 	},
 	externals: {
-		'react-sortable-tree': 'commonjs2 react-sortable-tree',
 		antd: 'commonj2 antd',
-		uuid: 'commonjs2 uuid',
 		react: 'commonjs2 react'
 	},
 	plugins: [
