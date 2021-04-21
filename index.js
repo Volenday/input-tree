@@ -1,28 +1,38 @@
 import React, { Component } from 'react';
 import { Form, Tree, Tooltip } from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
 
 export default class InputTree extends Component {
 	renderTree() {
-		const { value = '[]', toolTip = {} } = this.props;
+		const { value = '[]' } = this.props;
 
 		let newValue = JSON.parse(value);
 		newValue = newValue.length != 0 ? newValue : [{ title: 'Root', key: 'root' }];
 
-		const tree = (
+		return (
 			<div style={{ height: 400 }}>
 				<Tree draggable showLine selectable={false} treeData={newValue || []} />
 			</div>
 		);
-
-		return Object.keys(toolTip).length === 0 ? tree : <Tooltip {...toolTip}>{tree}</Tooltip>;
 	}
 
 	render() {
-		const { label = '', required = false, withLabel = false } = this.props;
+		const { label = '', required = false, withLabel = false, toolTip = '' } = this.props;
 
 		const formItemCommonProps = {
 			colon: false,
-			label: withLabel ? label : false,
+			label: withLabel ? (
+				<span class="label">
+					{label}{' '}
+					{toolTip && (
+						<Tooltip title={toolTip}>
+							<QuestionCircleOutlined />
+						</Tooltip>
+					)}
+				</span>
+			) : (
+				false
+			),
 			required
 		};
 
