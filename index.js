@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import { Form, Tree } from 'antd';
+import { Form, Tree, Tooltip } from 'antd';
 
 export default class InputTree extends Component {
 	renderTree() {
-		const { value = '[]' } = this.props;
+		const { value = '[]', toolTip = {} } = this.props;
 
 		let newValue = JSON.parse(value);
 		newValue = newValue.length != 0 ? newValue : [{ title: 'Root', key: 'root' }];
 
-		return (
+		const tree = (
 			<div style={{ height: 400 }}>
 				<Tree draggable showLine selectable={false} treeData={newValue || []} />
 			</div>
 		);
+
+		return Object.keys(toolTip).length === 0 ? tree : <Tooltip {...toolTip}>{tree}</Tooltip>;
 	}
 
 	render() {
